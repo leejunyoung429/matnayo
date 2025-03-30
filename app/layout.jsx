@@ -1,5 +1,8 @@
+// layout.jsx
 import "./globals.css";
 import Header from "@/components/header";
+import "@radix-ui/themes/styles.css";
+import { Providers } from "./providers"; // 경로를 실제 위치에 맞게 조정
 
 export const metadata = {
   title: "My App",
@@ -9,18 +12,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ja">
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
-          crossOrigin="anonymous"
-        />
-      </head>
-
       <body>
-        <div className="body-wrapper">
+        <div className="w-[375px] max-w-full mx-auto bg-white flex flex-col min-h-screen">
           <Header />
-          <div>{children}</div>
+          <Providers>
+            <div>{children}</div>
+          </Providers>
         </div>
       </body>
     </html>
