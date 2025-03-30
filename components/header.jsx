@@ -1,4 +1,4 @@
-import Icons from "@/components/icons/header_icons";
+import Icons from "@/components/icons/header-icons";
 import Image from "next/image";
 
 const { BookmarkIcon, CalendarIcon, MypageIcon } = Icons;
