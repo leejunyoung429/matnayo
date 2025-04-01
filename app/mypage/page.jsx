@@ -3,8 +3,8 @@
 import { useSession } from "next-auth/react";
 import ArrowIcon from "@/components/icons/mypage-icons";
 import SegmentGroup from "@/components/segment-group";
-import ChatRoom from "@/components/chat-room";
-import Upload from "@/components/upload";
+import ChatRoom from "@/app/mypage/chat-room";
+import Upload from "@/app/mypage/upload";
 
 export default function MypagePage() {
   const { data: session, status } = useSession();

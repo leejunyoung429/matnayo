@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import UploadIcons from "./icons/upload-icons";
+import UploadIcons from "../../components/icons/upload-icons";
 
 function Upload() {
   const [text, setText] = useState("");
