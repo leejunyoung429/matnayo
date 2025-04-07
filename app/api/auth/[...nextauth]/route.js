@@ -2,6 +2,7 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { FirestoreAdapter } from "@auth/firebase-adapter";
 import { firestore } from "@/lib/firebase";
+import { createChatRoomForUser } from "@/lib/auth-helpers";
 
 const handler = NextAuth({
   providers: [
@@ -23,6 +24,19 @@ const handler = NextAuth({
       return cleanedUrl.startsWith("http")
         ? cleanedUrl
         : `${baseUrl}${cleanedUrl}`;
+    },
+    async session({ session, user }) {
+      // 세션에 사용자 ID 추가
+      if (session?.user) {
+        session.user.id = user.id;
+      }
+      return session;
+    },
+  },
+  events: {
+    createUser: async ({ user }) => {
+      // 사용자가 생성되면 chatRoom 생성
+      await createChatRoomForUser(user.id);
     },
   },
 });
