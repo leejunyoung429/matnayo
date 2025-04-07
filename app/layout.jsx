@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ja">
       <body>
-        <div className="w-[375px] max-w-full mx-auto bg-white flex flex-col min-h-screen">
+        <div className="w-[375px] max-w-full mx-auto bg-white flex flex-col">
           <Header />
           <Providers>
             <div>{children}</div>
