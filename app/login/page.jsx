@@ -1,9 +1,21 @@
 "use client";
 
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 export default function LoginPage() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  // 사용자가 로그인되면 마이페이지로 리디렉션
+  useEffect(() => {
+    if (session?.user) {
+      router.push("/mypage");
+    }
+  }, [session, router]);
+
   const handleLogin = () => {
     signIn("google");
   };
